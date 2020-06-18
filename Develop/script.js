@@ -10,6 +10,22 @@ function writePassword() {
 
 }
 
+function randomIndex(item_length) {
+  // Helper function which takes in the length of a string or array, and returns a random index of that array.
+
+  var random_float = (item_array_length) * Math.random()
+  var index = Math.floor(random_float)
+  return index
+}
+
+function randomInserter(string_so_far, new_char) {
+  // Takes in an existing string and a new character to insert. It inserts the new character into the string at a random location.
+
+  var length = string_so_far.length
+  var index = randomIndex(length)
+  return string_so_far.slice(0, index) + new_char + string_so_far.slice(index)
+}
+
 function generatePassword() {
   // The main password-generating function.
 
@@ -123,6 +139,24 @@ function generatePassword() {
       included_criteria[i].charNum = lower_char_num;
     };
   };
+
+
+  This
+  for (i = 0; i < included_criteria.length; i++) {
+  
+    charSet = included_criteria[i].charSet;
+
+    while (included_criteria[i].charNum > 0) {
+
+      charSetIndex = randomIndex(charSet.length);
+      new_char = charSet[charSetIndex];
+      password = randomInserter(password, new_char);
+      included_criteria[i].charNum -= 1;
+
+    }
+  }
+
+
 
 
 
