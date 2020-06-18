@@ -28,6 +28,17 @@ function generatePassword() {
   // Variable storing the password length.
   var pass_length = 0;
 
+  // Variable storing the number of different character types to be stored in the password.
+  var criteria_number = 0;
+
+  // Array which will store the different criteria (as objects) to be included in the password.
+  var included_criteria = [];
+
+  // Array which will string-object pairs into the criteriaPrompt function.
+  var all_criteria = [['lowercase letters', has_lowercase], ['uppercase letters', has_uppercase], ['numerical characters', has_numericals], ['special characters', has_specials]];
+
+  // The password starts as an empty string, and will addended later in the code.
+  var password = '';
 
   function criteriaPrompt(criteria_name, criteria_object) {
     // Takes in the name of the criteria for display, and the associated criteria object. This function will prompt the user to include or exclude each of the four criteria.
@@ -76,6 +87,32 @@ function generatePassword() {
       setLength();
     };
   };
+
+  // Call the function to prompt the user to set the password length.
+  setLength();
+
+  // For loop that causes the user criteria prompts to appear..
+  for (i = 0; i < 4; i++) {
+    criteriaPrompt(all_criteria[i][0], all_criteria[i][1]);
+  };
+
+  // The following if statements will add the criteria to 'included_criteria' if the user prompted to include them.'
+  if (has_lowercase.include) {
+    included_criteria.push(has_lowercase);
+  };
+
+  if (has_uppercase.include) {
+    included_criteria.push(has_uppercase);
+  };
+
+  if (has_numericals.include) {
+    included_criteria.push(has_numericals);
+  };
+
+  if (has_specials.include) {
+    included_criteria.push(has_specials)
+  };
+
 
 
 
