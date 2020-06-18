@@ -113,6 +113,19 @@ function generatePassword() {
     included_criteria.push(has_specials)
   };
 
+  // For loop that sets the number of each character set to include in the password.
+  for (i = 0; i < criteria_number; i++) {
+    if (i === 0) {
+      included_criteria[i].charNum = upper_char_num;
+    }
+
+    else {
+      included_criteria[i].charNum = lower_char_num;
+    };
+  };
+
+
+
 
 
 
@@ -122,4 +135,4 @@ function generatePassword() {
 
 
 // Add event listener to generate button
-document.getElementById("generate").addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
