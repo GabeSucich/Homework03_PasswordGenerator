@@ -8,15 +8,15 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
+};
 
 function randomIndex(item_length) {
   // Helper function which takes in the length of a string or array, and returns a random index of that array.
 
-  var random_float = (item_array_length) * Math.random()
+  var random_float = (item_length) * Math.random()
   var index = Math.floor(random_float)
   return index
-}
+};
 
 function randomInserter(string_so_far, new_char) {
   // Takes in an existing string and a new character to insert. It inserts the new character into the string at a random location.
@@ -24,7 +24,7 @@ function randomInserter(string_so_far, new_char) {
   var length = string_so_far.length
   var index = randomIndex(length)
   return string_so_far.slice(0, index) + new_char + string_so_far.slice(index)
-}
+};
 
 function generatePassword() {
   // The main password-generating function.
@@ -81,9 +81,9 @@ function generatePassword() {
   function setLength() {
     // Function which when called gets the user to set a password length.
 
-    response = prompt('How many characters would you like your password to be? Type a number. (Passwords can be betwen 8 and 128 characters long.')
+    response = prompt('How many characters would you like your password to be? Type a number. (Passwords can be betwen 8 and 128 characters long.');
     response = parseInt(response);
-    console.log(response)
+
 
     if (Number.isInteger(response)) {
 
@@ -94,7 +94,7 @@ function generatePassword() {
       else {
         alert("Password length can be no less than 8 and no greater than 128 characters long.");
         setLength();
-      }
+      };
 
     }
 
@@ -103,6 +103,7 @@ function generatePassword() {
       setLength();
     };
   };
+
 
   // Call the function to prompt the user to set the password length.
   setLength();
@@ -129,6 +130,10 @@ function generatePassword() {
     included_criteria.push(has_specials)
   };
 
+  // These variables control the number of each character set to add.
+    var lower_char_num = Math.floor(pass_length / criteria_number);
+    var upper_char_num = pass_length - (criteria_number - 1) * (lower_char_num);
+
   // For loop that sets the number of each character set to include in the password.
   for (i = 0; i < criteria_number; i++) {
     if (i === 0) {
@@ -138,10 +143,10 @@ function generatePassword() {
     else {
       included_criteria[i].charNum = lower_char_num;
     };
+
   };
-
-
-  This
+  
+  // This for loop will add the proper number of random characters from each character set to the password at random places.
   for (i = 0; i < included_criteria.length; i++) {
   
     charSet = included_criteria[i].charSet;
@@ -153,15 +158,9 @@ function generatePassword() {
       password = randomInserter(password, new_char);
       included_criteria[i].charNum -= 1;
 
-    }
-  }
-
-
-
-
-
-
-
+    };
+  };
+  return password
 
 }
 
