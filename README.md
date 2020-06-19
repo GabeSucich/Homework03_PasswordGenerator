@@ -52,7 +52,7 @@ Function which, given an array or string length, can choose a random index, and 
 
 ![demo](Markdown/project.png)
 
-* Gabriel Sucich
+#### Gabriel Sucich
 
 - [Portfolio coming soon!](#)
 - [Link to Github](https://github.com/GabeSucich)
